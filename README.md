@@ -1,5 +1,5 @@
 # monitoring
-
+[![Monitoring CI](https://github.com/hagegata/monitoring/actions/workflows/ci.yml/badge.svg)](https://github.com/hagegata/monitoring/actions/workflows/ci.yml)
 Стек мониторинга на базе Prometheus и Grafana для сбора метрик хоста ALT Linux.
 
 ## Стек
