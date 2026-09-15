@@ -34,6 +34,17 @@ Grafana (localhost:3000)
 
     Конфигурация Prometheus хранится в prometheus.yml.
 
+## Алертинг
+
+- **Alertmanager** принимает алерты от Prometheus.
+- Правило `NodeDown`: срабатывает, если таргет `up == 0` более 1 минуты.
+- Полный цикл проверен: остановка Node Exporter → алерт Firing → возврат → Inactive.
+
+### Файлы
+
+- `alertmanager.yml` — конфигурация маршрутов и получателей.
+- `rules.yml` — правила алертинга.
+
 ## Автор
 
 Егор Кузнецов
