@@ -4,9 +4,10 @@ services:
     container_name: prometheus
     network_mode: host
     volumes:
-    - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./rules.yml:/etc/prometheus/rules.yml:ro
     command:
-    - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--config.file=/etc/prometheus/prometheus.yml'
     restart: unless-stopped
 
   node-exporter:
@@ -19,4 +20,14 @@ services:
     image: grafana/grafana:latest
     container_name: grafana
     network_mode: host
+    restart: unless-stopped
+
+  alertmanager:
+    image: prom/alertmanager:latest
+    container_name: alertmanager
+    network_mode: host
+    volumes:
+      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
+    command:
+      - '--config.file=/etc/alertmanager/alertmanager.yml'
     restart: unless-stopped

@@ -1,0 +1,11 @@
+groups:
+  - name: node_alerts
+    rules:
+      - alert: NodeDown
+        expr: up == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Node Exporter недоступен"
+          description: "Таргет {{ $labels.instance }} не отвечает более 1 минуты."
